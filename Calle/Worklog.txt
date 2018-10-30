@@ -1,0 +1,8 @@
+Started playing with the code and ended up basically implemting the
+tempOnDay function. The function can currently only read .dat files, specifically
+.dat files that are structured in the way the provided .dat file with
+data from Uppsala is. 
+The code is tested and works fine as far as I can tell it is not yet 
+commented however. 
+
+30/10-18
