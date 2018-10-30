@@ -20,7 +20,7 @@ class tempTrender {
 	
 	void readFile(string pathToFile) {pathToFile_ = pathToFile;}
 	
-	void tempOnDay(int monthToCalculate, int dayToCalculate, double tempProb = std::numeric_limits<double>::quiet_NaN()) {
+	void tempOnDay(int monthToCalculate, int dayToCalculate, double specTemp = std::numeric_limits<double>::quiet_NaN()) {
 		ifstream file(pathToFile_);
 		TH1I* hist = new TH1I("temperature", "Temperature;Temperature[#circC];Entries", 300, -20, 40);
 		hist->SetFillColor(kRed + 1);
@@ -34,12 +34,12 @@ class tempTrender {
 			}
 		}
 		
-		if(tempProb == tempProb){
-			int binNum = hist->FindBin(tempProb);
+		if(specTemp == specTemp){
+			int binNum = hist->FindBin(specTemp);
 			double binEntries = hist->GetEntries();
 			double specBinEntries = hist->GetBinContent(binNum);
-			double specTemp = specBinEntries/binEntries;
-			cout << "Probability of temp being " << tempProb << " degrees: " << specTemp*100 << " %" << endl;
+			double tempProb = specBinEntries/binEntries;
+			cout << "Probability of temp being " << specTemp << " degrees: " << tempProb*100 << " %" << endl;
 		}
 
 		double mean = hist->GetMean(); //The mean of the distribution
