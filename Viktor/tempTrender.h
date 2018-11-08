@@ -54,8 +54,30 @@ class tempTrender {
 	//void tempOnDay(int dateToCalculate); //Make a histogram of the temperature on this date
 	//void tempPerDay(); //Make a histogram of the average temperature of each day of the year
 	//void hotCold(); //Make a histogram of the hottest and coldest day of the year
-	//void tempPerYear(int yearToExtrapolate); //Make a histogram of average temperature per year, then fit and extrapolate to the given year
-
+	
+	void tempPerYear(int yearToExtrapolate)//Make a histogram of average temperature per year, then fit and extrapolate to the given year
+	{
+		int StartYear = 1722;
+		int EndYear = 2013;
+				
+		ifstream file(pathToFile_);
+		int month = -1, day = -1;
+		double temp = -1;
+		
+		TGraph* graph = new TGraph();
+		
+		for(int bin = 1; bin < hist->GetNbinsX(); ++bin) 
+			{
+			graph->Expand(graph->GetN() + 1, 100);
+			graph->SetPoint(graph->GetN(), hist->GetBinCenter(bin),
+			hist->GetBinContent(bin));
+			}
+		graph->Draw("SAME C");
+	
+	
+	} 	
+	
+	
 	private:
 	string pathToFile_;
 };
